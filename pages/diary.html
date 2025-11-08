@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дневник</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+    }
+    .progress-item {
+      border-left: 4px solid #0d6efd;
+      padding-left: 15px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+    .progress-item.completed {
+      border-left-color: #198754;
+    }
+    .progress-item.in-progress {
+      border-left-color: #ffc107;
+    }
+    .status-badge {
+      cursor: pointer;
+    }
+    .course-progress {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0 d-flex flex-column min-vh-100">
+    <header class="bg-primary text-white py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col">
+            <h1 class="h3 mb-1">Моё портфолио</h1>
+            <p class="mb-0 opacity-75">Студент разработчик</p>
+          </div>
+          <div class="col-auto">
+            <span class="badge bg-light text-primary">ЭФБО-07-24</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="../index.html"><i class="bi bi-house me-2"></i>Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="projects.html"><i class="bi bi-collection me-2"></i>Проекты</a></li>
+            <li class="nav-item"><a class="nav-link active" href="diary.html"><i class="bi bi-journal-bookmark-fill me-2"></i>Дневник</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html"><i class="bi bi-telephone me-2"></i>Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container my-4 flex-grow-1">
+      <h2 class="mb-4">Мой учебный прогресс</h2>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Мой учебный прогресс</h5>
+            </div>
+            <div class="card-body" id="progress-list">
+              <div class="progress-item completed" data-id="1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">15 дек - Верстка макета сайта</h6>
+                    <p class="mb-0 text-muted small">Завершена верстка главной страницы портфолио</p>
+                  </div>
+                  <span class="status-badge badge bg-success" data-status="completed">✓ Выполнено</span>
+                </div>
+              </div>
+              <div class="progress-item completed" data-id="2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">10 дек - JavaScript основы</h6>
+                    <p class="mb-0 text-muted small">Изучены базовые концепции JavaScript</p>
+                  </div>
+                  <span class="status-badge badge bg-success" data-status="completed">✓ Выполнено</span>
+                </div>
+              </div>
+              <div class="progress-item in-progress" data-id="3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">05 дек - Работа с формами</h6>
+                    <p class="mb-0 text-muted small">В процессе изучения валидации форм</p>
+                  </div>
+                  <span class="status-badge badge bg-warning text-dark" data-status="in-progress">В процессе</span>
+                </div>
+              </div>
+              <div class="progress-item in-progress" data-id="4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-1">01 дек - Адаптивный дизайн</h6>
+                    <p class="mb-0 text-muted small">Изучение медиа-запросов и flexbox</p>
+                  </div>
+                  <span class="status-badge badge bg-warning text-dark" data-status="in-progress">В процессе</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Добавить новую запись</h5>
+            </div>
+            <div class="card-body">
+              <form id="add-progress-form">
+                <div class="mb-3">
+                  <label for="progress-date" class="form-label">Дата</label>
+                  <input type="date" class="form-control" id="progress-date" required>
+                </div>
+                <div class="mb-3">
+                  <label for="progress-title" class="form-label">Название задачи</label>
+                  <input type="text" class="form-control" id="progress-title">
+                </div>
+                <div class="mb-3">
+                  <label for="progress-description" class="form-label">Описание</label>
+                  <textarea class="form-control" id="progress-description" rows="3" placeholder="Подробное описание выполненной работы..."></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Статус</label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="progress-status" id="status-in-progress" value="in-progress" checked>
+                      <label class="form-check-label" for="status-in-progress">В процессе</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="progress-status" id="status-completed" value="completed">
+                      <label class="form-check-label" for="status-completed">Выполнено</label>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-plus-circle me-2"></i>Добавить запись
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Текущие курсы</h5>
+            </div>
+            <div class="card-body">
+              <div class="course-progress">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Веб-разработка</span>
+                  <span>50%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+                </div>
+              </div>
+              <div class="course-progress">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>JavaScript</span>
+                  <span>50%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+                </div>
+              </div>
+              <div class="course-progress">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>React</span>
+                  <span>50%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-dark text-white py-4 mt-auto">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="mb-0">&copy; 2024 Конкина Е.А. Все права защищены.</p>
+          </div>
+            <div class="col-md-6 text-md-end">
+              <a href="pages/contacts.html" class="text-white textdecoration-none me-3">Контакты</a>
+              <a href="#" class="text-white text-decorationnone">Политика конфиденциальности</a>
+            </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const progressList = document.getElementById('progress-list');
+      const addProgressForm = document.getElementById('add-progress-form');
+      let progressId = 5;
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('progress-date').value = today;
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.toLocaleString('ru', { month: 'short' });
+        return `${day} ${month}`;
+      }
+      addProgressForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const date = document.getElementById('progress-date').value;
+        const title = document.getElementById('progress-title').value;
+        const description = document.getElementById('progress-description').value;
+        const status = document.querySelector('input[name="progress-status"]:checked').value;
+        if (title.trim() === '') {
+          alert('Пожалуйста, введите название задачи');
+          return;
+        }
+        const newProgressItem = document.createElement('div');
+        newProgressItem.className = `progress-item ${status}`;
+        newProgressItem.setAttribute('data-id', progressId);
+        const statusText = status === 'completed' ? '✓ Выполнено' : 'В процессе';
+        const statusClass = status === 'completed' ? 'bg-success' : 'bg-warning text-dark';
+        newProgressItem.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="mb-1">${formatDate(date)} - ${title}</h6>
+              <p class="mb-0 text-muted small">${description || 'Без описания'}</p>
+            </div>
+            <span class="status-badge badge ${statusClass}" data-status="${status}">${statusText}</span>
+          </div>
+        `;
+        progressList.prepend(newProgressItem);
+        const statusBadge = newProgressItem.querySelector('.status-badge');
+        statusBadge.addEventListener('click', toggleStatus);
+        addProgressForm.reset();
+        document.getElementById('progress-date').value = today;
+        progressId++;
+        alert('Запись успешно добавлена!');
+      });
+      function toggleStatus() {
+        const progressItem = this.closest('.progress-item');
+        const currentStatus = this.getAttribute('data-status');
+        const newStatus = currentStatus === 'completed' ? 'in-progress' : 'completed';
+        this.setAttribute('data-status', newStatus);
+        if (newStatus === 'completed') {
+          this.className = 'status-badge badge bg-success';
+          this.textContent = '✓ Выполнено';
+          progressItem.className = 'progress-item completed';
+        } else {
+          this.className = 'status-badge badge bg-warning text-dark';
+          this.textContent = 'В процессе';
+          progressItem.className = 'progress-item in-progress';
+        }
+      }
+      document.querySelectorAll('.status-badge').forEach(badge => {
+        badge.addEventListener('click', toggleStatus);
+      });
+    });
+  </script>
+</body>
+</html>
