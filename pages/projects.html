@@ -19,6 +19,26 @@
     main {
       flex: 1;
     }
+    /* Стиль для выравнивания по левому краю */
+    .projects-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .project-column {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .project-column {
+        width: 50%;
+      }
+    }
+    @media (min-width: 992px) {
+      .project-column {
+        width: 25%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -60,8 +80,8 @@
         <button class="btn btn-outline-primary filter-btn" data-filter="react">React</button>
         <button class="btn btn-outline-primary filter-btn" data-filter="bt">Bootstrap</button>
       </div>
-      <div class="row" id="projects-container">
-        <div class="col-md-6 col-lg-3">
+      <div class="projects-row" id="projects-container">
+        <div class="project-column">
           <div class="card project-card" data-tech="html">
             <div class="card-body text-center">
               <i class="bi bi-laptop" style="font-size: 50px; color: #114695"></i>
@@ -71,7 +91,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="project-column">
           <div class="card project-card" data-tech="js">
             <div class="card-body text-center">
               <i class="bi bi-check-square" style="font-size: 50px; color: #114695;"></i>
@@ -81,7 +101,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="project-column">
           <div class="card project-card" data-tech="react">
             <div class="card-body text-center">
               <i class="bi bi-cart" style="font-size: 50px; color: #114695;"></i>
@@ -91,7 +111,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="project-column">
           <div class="card project-card" data-tech="bt">
             <div class="card-body text-center">
               <i class="bi bi-person-badge" style="font-size: 50px; color: #114695;"></i>
@@ -107,25 +127,29 @@
       <div class="container">
         <div class="row align-items-center">
            <div class="col-md-6">
-              <p class="mb-0">&copy; 2024 Конкина Е.А. Все права защищены.
-                </p>
+              <p class="mb-0">&copy; 2024 Конкина Е.А. Все права защищены.</p>
             </div>
             <div class="col-md-6 text-md-end">
-              <a href="pages/contacts.html" class="text-white textdecoration-none me-3">Контакты</a>
-              <a href="#" class="text-white text-decorationnone">Политика конфиденциальности</a>
+              <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+              <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
             </div>
           </div>
       </div>
     </footer>
   </div>
+
+  <!-- Модальные окна с исправленными путями к изображениям -->
   <div class="modal fade" id="projectModal1" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Личный сайт</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <div class="text-center mb-3">
+            <img src="../images/sait.jpg" alt="Личный сайт" class="img-fluid rounded" style="max-height: 300px;">
+          </div>
           <p><strong>Описание:</strong> Простой личный сайт-визитка на HTML и CSS с адаптивным дизайном.</p>
           <p><strong>Технологии:</strong> HTML5, CSS3, Flexbox</p>
           <p><strong>Функционал:</strong> Главная страница, портфолио, контакты</p>
@@ -139,14 +163,18 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="projectModal2" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Todo-приложение</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <div class="text-center mb-3">
+            <img src="../images/todo.jpg" alt="Todo-приложение" class="img-fluid rounded" style="max-height: 300px;">
+          </div>
           <p><strong>Описание:</strong> Приложение для управления задачами с возможностью добавления, удаления и отметки выполненных задач.</p>
           <p><strong>Технологии:</strong> JavaScript, Local Storage, CSS</p>
           <p><strong>Функционал:</strong> Добавление задач, фильтрация, сохранение в браузере</p>
@@ -160,14 +188,18 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="projectModal3" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Интернет-магазин</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <div class="text-center mb-3">
+            <img src="../images/magazin.jpg" alt="Интернет-магазин" class="img-fluid rounded" style="max-height: 300px;">
+          </div>
           <p><strong>Описание:</strong> Интернет-магазин с корзиной покупок, фильтрацией товаров и оформлением заказа.</p>
           <p><strong>Технологии:</strong> React, React Router, Context API</p>
           <p><strong>Функционал:</strong> Каталог товаров, корзина, поиск, фильтры</p>
@@ -181,14 +213,18 @@
       </div>
     </div>
   </div>
+
   <div class="modal fade" id="projectModal4" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Портфолио</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <div class="text-center mb-3">
+            <img src="../images/portfolio.jpg" alt="Портфолио" class="img-fluid rounded" style="max-height: 300px;">
+          </div>
           <p><strong>Описание:</strong> Адаптивное портфолио с фильтрацией проектов и контактной формой.</p>
           <p><strong>Технологии:</strong> Bootstrap 5, JavaScript, CSS</p>
           <p><strong>Функционал:</strong> Фильтрация проектов, модальные окна, адаптивный дизайн</p>
@@ -202,38 +238,32 @@
       </div>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const projectCards = document.querySelectorAll('.project-card');
-      const projectsContainer = document.getElementById('projects-container');
-      const originalCards = Array.from(projectCards);
+      const projectColumns = document.querySelectorAll('.project-column');
+      
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           filterBtns.forEach(b => b.classList.remove('active'));
           this.classList.add('active'); 
           const filter = this.getAttribute('data-filter');
-          projectCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.8)';
-            setTimeout(() => {
-              card.style.display = 'none';
-            }, 300);
+          
+          // Скрываем все карточки
+          projectColumns.forEach(column => {
+            column.style.display = 'none';
           });
-          setTimeout(() => {
-            let delay = 0;
-            projectCards.forEach(card => {
-              if (filter === 'all' || card.getAttribute('data-tech') === filter) {
-                card.style.display = 'block';
-                setTimeout(() => {
-                  card.style.opacity = '1';
-                  card.style.transform = 'scale(1)';
-                }, delay);
-                delay += 100;
-              }
-            });
-          }, 300);
+          
+          // Показываем нужные карточки мгновенно
+          projectColumns.forEach(column => {
+            const card = column.querySelector('.project-card');
+            if (filter === 'all' || card.getAttribute('data-tech') === filter) {
+              column.style.display = 'block';
+            }
+          });
         });
       });
     });
