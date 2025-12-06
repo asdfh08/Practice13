@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Проекты</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -19,29 +19,32 @@
     main {
       flex: 1;
     }
-    /* Стиль для выравнивания по левому краю */
-    .projects-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+    
+    /* ==== CSS GRID ДЛЯ ПРАКТИКИ №15 (ОБЯЗАТЕЛЬНО) ==== */
+    #projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
     }
+    
     .project-column {
-      flex: 0 0 auto;
-      width: 100%;
+        /* Grid сам управляет шириной */
     }
-    @media (min-width: 768px) {
-      .project-column {
-        width: 50%;
-      }
+    
+    .project-card {
+        height: 100%; /* Выравнивание высоты карточек */
+        margin-bottom: 0; /* Убираем старый отступ */
     }
-    @media (min-width: 992px) {
-      .project-column {
-        width: 25%;
-      }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
   <div class="container-fluid p-0 d-flex flex-column min-vh-100">
     <header class="bg-primary text-white py-4">
       <div class="container">
@@ -71,7 +74,7 @@
         </div>
       </div>
     </nav>
-    <main class="container my-4 flex-grow-1">
+    <main class="container my-4 flex-grow-1" id="main-content">
       <h2 class="mb-4">Мои проекты</h2>
       <div class="mb-4">
         <button class="btn btn-outline-primary filter-btn active" data-filter="all">Все</button>
@@ -138,7 +141,7 @@
     </footer>
   </div>
 
-  <!-- Модальные окна с исправленными путями к изображениям -->
+  <!-- Модальные окна -->
   <div class="modal fade" id="projectModal1" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -148,7 +151,17 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-3">
-            <img src="../images/sait.jpg" alt="Личный сайт" class="img-fluid rounded" style="max-height: 300px;">
+            <picture>
+              <source srcset="../images/sait.avif" type="image/avif">
+              <source srcset="../images/sait.webp" type="image/webp">
+              <img src="../images/sait.jpg" 
+                  alt="Личный сайт" 
+                  class="img-fluid rounded"
+                  width="600"
+                  height="300"
+                  style="max-height: 300px;"
+                  loading="lazy">
+          </picture>
           </div>
           <p><strong>Описание:</strong> Простой личный сайт-визитка на HTML и CSS с адаптивным дизайном.</p>
           <p><strong>Технологии:</strong> HTML5, CSS3, Flexbox</p>
@@ -173,7 +186,17 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-3">
-            <img src="../images/todo.jpg" alt="Todo-приложение" class="img-fluid rounded" style="max-height: 300px;">
+            <picture>
+              <source srcset="../images/todo.avif" type="image/avif">
+              <source srcset="../images/todo.webp" type="image/webp">
+              <img src="../images/todo.jpg" 
+                  alt="Тодо приложение" 
+                  class="img-fluid rounded"
+                  width="600"
+                  height="300"
+                  style="max-height: 300px;"
+                  loading="lazy">>
+          </picture>
           </div>
           <p><strong>Описание:</strong> Приложение для управления задачами с возможностью добавления, удаления и отметки выполненных задач.</p>
           <p><strong>Технологии:</strong> JavaScript, Local Storage, CSS</p>
@@ -198,7 +221,16 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-3">
-            <img src="../images/magazin.jpg" alt="Интернет-магазин" class="img-fluid rounded" style="max-height: 300px;">
+            <picture>
+              <source srcset="../images/magazin.avif" type="image/avif">
+              <source srcset="../images/magazin.webp" type="image/webp">
+              <img src="../images/magazin.jpg"
+                  alt="Интернет-магазин"
+                  class="img-fluid rounded"
+                  width="600" height="300"
+                  style="max-height: 300px;"
+                  loading="lazy">
+          </picture>
           </div>
           <p><strong>Описание:</strong> Интернет-магазин с корзиной покупок, фильтрацией товаров и оформлением заказа.</p>
           <p><strong>Технологии:</strong> React, React Router, Context API</p>
@@ -223,7 +255,16 @@
         </div>
         <div class="modal-body">
           <div class="text-center mb-3">
-            <img src="../images/portfolio.jpg" alt="Портфолио" class="img-fluid rounded" style="max-height: 300px;">
+            <picture>
+              <source srcset="../images/portfolio.avif" type="image/avif">
+              <source srcset="../images/portfolio.webp" type="image/webp">
+              <img src="../images/portfolio.jpg"
+                  alt="Портфолио"
+                  class="img-fluid rounded"
+                  width="600" height="300"
+                  style="max-height: 300px;"
+                  loading="lazy">
+          </picture>
           </div>
           <p><strong>Описание:</strong> Адаптивное портфолио с фильтрацией проектов и контактной формой.</p>
           <p><strong>Технологии:</strong> Bootstrap 5, JavaScript, CSS</p>

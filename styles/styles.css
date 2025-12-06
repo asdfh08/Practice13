@@ -748,3 +748,108 @@ dialog {
         transform: translateY(0) scale(1);
     }
 }
+
+/* ==== СТИЛИ ДЛЯ ПРАКТИКИ №15 (ОБЯЗАТЕЛЬНЫЕ) ==== */
+
+/* 1. Базовые настройки viewport и высоты */
+:root { 
+    color-scheme: light dark; 
+}
+
+html, body { 
+    height: 100%; 
+}
+
+/* Применяем к body из index.html */
+body.d-flex.flex-column.min-vh-100 {
+    min-height: 100vh !important;
+}
+
+/* 2. Skip-link стили */
+.skip-link{
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100px;
+    z-index: 10000;
+    padding: .5rem .75rem;
+    background: #111;
+    color: #fff;
+    border-radius: .5rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible { 
+    inset-block-start: 1rem; 
+}
+
+/* 3. Видимый фокус (обязательно для доступности) */
+:focus-visible { 
+    outline: 3px solid #2563eb !important; 
+    outline-offset: 2px !important; 
+}
+
+a, button, input, textarea, select { 
+    outline-offset: 2px; 
+}
+
+/* 4. Sticky-хедер с safe areas (ОБЯЗАТЕЛЬНЫЙ ПУНКТ) */
+.navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1020 !important;
+    
+    /* Safe areas для iPhone с "чёлкой" */
+    padding-top: calc(.75rem + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: .75rem !important;
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
+    
+    isolation: isolate !important;
+}
+
+/* 5. Большие цели для touch устройств (WCAG) */
+@media (pointer: coarse){
+    .nav__link, .btn, .filter-btn, .navbar-nav .nav-link { 
+        min-height: 44px; 
+        min-width: 44px;
+        padding: .75rem 1rem !important;
+    }
+}
+
+/* 6. Safe area для футера (мобильные панели) */
+.footer {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+}
+
+/* 7. Плавные размеры с clamp() (из методички) */
+.section-title { 
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem); 
+}
+
+.main { 
+    padding-inline: clamp(1rem, 0.5rem + 1vw, 2rem); 
+}
+
+/* 8. Визуально скрытый текст для доступности */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* 9. Плавные размеры для заголовков (clamp) */
+h1, .h1, h2, .h2 {
+    font-size: clamp(1.5rem, 1.2rem + 1vw, 2.5rem) !important;
+}
+
+h3, .h3, h4, .h4, h5, .h5 {
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.8rem) !important;
+}
