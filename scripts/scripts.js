@@ -31,3 +31,35 @@ function showAllCards(){
 function deactivateBtns(){
   btns.forEach(btn=>btn.classList.remove('current'))
 }
+
+// Управление темой
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            
+            const icon = this.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
+            
+            this.setAttribute('aria-label', 
+                newTheme === 'dark' 
+                    ? 'Переключить на светлую тему' 
+                    : 'Переключить на тёмную тему');
+        });
+
+        document.addEventListener('keydown', function(e) {
+
+            if ((e.key === 'Enter' || e.key === ' ') && 
+                e.target.getAttribute('role') === 'button') {
+                e.preventDefault();
+                e.target.click();
+            }
+            
+            if (e.key === 'Escape') {
+                const navbar = document.querySelector('.navbar-collapse.show');
+                if (navbar) {
+                    const toggler = document.querySelector('.navbar-toggler');
+                    if (toggler) toggler.click();
+                }
+            }
+        });

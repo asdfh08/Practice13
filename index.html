@@ -1,55 +1,83 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Главная - Портфолиоо</title>
+    <meta name="description" content="Портфолио студента разработчика Конкиной Екатерины Алексеевны">
+    <title>Главная - Портфолио Конкиной Е.А.</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
-    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
-    <!-- Header -->
-    <header class="bg-primary text-white py-4">
+<body class="bg-light d-flex flex-column min-vh-100" data-theme="light">
+    
+    <!-- Пропуск ссылки для скринридеров -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">
+        <span class="visually-hidden-text">Перейти к основному содержимому</span>
+    </a>
+    
+    <!-- Header с семантической разметкой -->
+    <header class="bg-primary text-white py-4" style="background-color: #0056b3 !important;" role="banner" aria-label="Шапка сайта">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col">
-                    <h1 class="h3 mb-1">Моё Портфолио</h1>
-                    <p class="mb-0 opacity-75">Студент разработчик</p>
+                    <h1 class="h3 mb-1">Моё портфолио</h1>
+                    <p class="mb-0" style="color: #e2ebf3;">Студент разработчик</p>
                 </div>
                 <div class="col-auto">
-                    <span class="badge bg-light text-primary">ЭФБО-07-24</span>
+                    <span class="badge bg-light text-white" aria-label="Группа ЭФБО-07-24">ЭФБО-07-24</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Навигация с ARIA атрибутами -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" 
+         role="navigation" 
+         aria-label="Основная навигация">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            <i class="bi bi-house me-2"></i>Главная
+            <div class="collapse navbar-collapse" id="navbarNav" role="menubar">
+                <ul class="navbar-nav" role="none">
+                    <li class="nav-item" role="none">
+                        <a class="nav-link active" 
+                           href="index.html"
+                           role="menuitem"
+                           aria-current="page">
+                            <i class="bi bi-house me-2" aria-hidden="true"></i>
+                            <span class="nav-link-text">Главная</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/projects.html">
-                            <i class="bi bi-collection me-2"></i>Проекты
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" 
+                           href="pages/projects.html"
+                           role="menuitem">
+                            <i class="bi bi-collection me-2" aria-hidden="true"></i>
+                            <span class="nav-link-text">Проекты</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/diary.html">
-                            <i class="bi bi-journal-bookmark-fill me-2"></i>Дневник
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" 
+                           href="pages/diary.html"
+                           role="menuitem">
+                            <i class="bi bi-journal-bookmark-fill me-2" aria-hidden="true"></i>
+                            <span class="nav-link-text">Дневник</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/contacts.html">
-                            <i class="bi bi-telephone me-2"></i>Контакты
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" 
+                           href="pages/contacts.html"
+                           role="menuitem">
+                            <i class="bi bi-telephone me-2" aria-hidden="true"></i>
+                            <span class="nav-link-text">Контакты</span>
                         </a>
                     </li>
                 </ul>
@@ -58,9 +86,12 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="main-content" id="main-content">
+    <main class="main-content" id="main-content" role="main" tabindex="-1">
         <div class="container my-4">
-            <section class="mb-5">
+            
+            <!-- Секция профиля -->
+            <section aria-labelledby="profile-heading" class="mb-5">
+                <h2 id="profile-heading" class="visually-hidden">Профиль студента</h2>
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
                         <div class="row align-items-center">
@@ -69,36 +100,46 @@
                                     <source srcset="images/photo.avif" type="image/avif">
                                     <source srcset="images/photo.webp" type="image/webp">
                                     <img src="images/photo.jpg" 
-                                        alt="Фото Конкиной Екатерины Алексеевны"
-                                        class="img-fluid rounded-circle"
-                                        width="200" 
-                                        height="200"
-                                        style="width: 150px; height: 150px; object-fit: cover;"
-                                        loading="eager"
-                                        fetchpriority="high">
+                                         alt="Фото Конкиной Екатерины Алексеевны, студентки группы ЭФБО-07-24"
+                                         class="img-fluid rounded-circle"
+                                         width="200" 
+                                         height="200"
+                                         style="width: 150px; height: 150px; object-fit: cover;"
+                                         loading="eager"
+                                         fetchpriority="high"
+                                         aria-describedby="photo-description">
                                 </picture>
+                                <p id="photo-description" class="visually-hidden">
+                                    Фотография Конкиной Екатерины Алексеевны, студентки группы ЭФБО-07-24
+                                </p>
                             </div>
                             <div class="col-md-9">
                                 <div class="row align-items-end">
                                     <div class="col-12 col-md-8">
-                                        <h2 class="card-title h4 text-primary">Конкина Екатерина Алексеевна</h2>
+                                        <h3 class="card-title h4 text-primary mb-2" id="student-name">
+                                            Конкина Екатерина Алексеевна
+                                        </h3>
                                         <p class="card-text text-muted mb-2">
-                                            <i class="bi bi-bookmark-check-fill text-primary"></i>
-                                            Студент группы ЭФБО-07-24
+                                            <i class="bi bi-bookmark-check-fill text-primary" aria-hidden="true"></i>
+                                            <span>Студент группы ЭФБО-07-24</span>
                                         </p>
-                                        <p class="card-text">
-                                            Дата рождения: 23.11.2006
+                                        <p class="card-text mb-3" aria-label="Дата рождения: 23 ноября 2006 года">
+                                            <strong>Дата рождения:</strong> 23.11.2006
                                         </p>
-                                        <div class="d-flex gap-2 flex-wrap">
-                                            <span class="badge bg-primary">HTML/CSS</span>
-                                            <span class="badge bg-success">JavaScript</span>
-                                            <span class="badge bg-info">Python</span>
-                                            <span class="badge bg-warning">Веб-дизайн</span>
+                                        <div class="d-flex gap-2 flex-wrap" role="list" aria-label="Навыки">
+                                            <span class="badge bg-primary" role="listitem">HTML/CSS</span>
+                                            <span class="badge bg-success" role="listitem">JavaScript</span>
+                                            <span class="badge bg-info" role="listitem">Python</span>
+                                            <span class="badge bg-warning" role="listitem">Веб-дизайн</span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 mt-3 mt-md-0">
-                                        <a href="assets/resume.pdf" class="btn btn-primary w-100" download="resume_konkina_ekaterina.pdf">
-                                            <i class="bi bi-download me-2"></i>Скачать резюме (PDF)
+                                        <a href="assets/resume.pdf" 
+                                           class="btn btn-primary w-100" 
+                                           download="resume_konkina_ekaterina.pdf"
+                                           aria-label="Скачать резюме Конкиной Екатерины в формате PDF">
+                                            <i class="bi bi-download me-2" aria-hidden="true"></i>
+                                            <span>Скачать резюме (PDF)</span>
                                         </a>
                                     </div>
                                 </div>
@@ -108,16 +149,17 @@
                 </div>
             </section>
 
-            <section class="mb-5">
+            <!-- Секция "Обо мне" -->
+            <section aria-labelledby="about-heading" class="mb-5">
                 <div class="card shadow-sm">
                     <div class="card-header bg-light">
-                        <h3 class="card-title h5 mb-0">
-                            <i class="bi bi-person-circle text-primary"></i>
-                            Обо мне
+                        <h3 id="about-heading" class="card-title h5 mb-0">
+                            <i class="bi bi-person-circle text-primary" aria-hidden="true"></i>
+                            <span>Обо мне</span>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">
+                        <p class="card-text" aria-label="Краткая информация обо мне">
                             Я студентка, увлекаюсь программированием и веб-разработкой. 
                             Изучаю новые технологии и совершенствую свои навыки. 
                             Люблю создавать красивые и функциональные веб-приложения.
@@ -126,53 +168,70 @@
                 </div>
             </section>
 
-            <section class="mb-5">
+            <!-- Секция навыков -->
+            <section aria-labelledby="skills-heading" class="mb-5">
                 <div class="card shadow-sm">
                     <div class="card-header bg-light">
-                        <h3 class="card-title h5 mb-0">
-                            <i class="bi bi-tools text-primary"></i>
-                            Мои навыки
+                        <h3 id="skills-heading" class="card-title h5 mb-0">
+                            <i class="bi bi-tools text-primary" aria-hidden="true"></i>
+                            <span>Мои навыки</span>
                         </h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="mb-3" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>HTML/CSS</span>
-                                        <span class="text-primary">90%</span>
+                                        <span id="html-label">HTML/CSS</span>
+                                        <span class="text-primary" aria-hidden="true">90%</span>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-primary" style="width: 90%"></div>
+                                        <div class="progress-bar bg-primary" 
+                                             style="width: 90%"
+                                             aria-labelledby="html-label"
+                                             aria-valuenow="90"
+                                             aria-valuetext="90 процентов"></div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>JavaScript</span>
-                                        <span class="text-primary">75%</span>
+                                        <span id="js-label">JavaScript</span>
+                                        <span class="text-primary" aria-hidden="true">75%</span>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-success" style="width: 75%"></div>
+                                        <div class="progress-bar bg-success" 
+                                             style="width: 75%"
+                                             aria-labelledby="js-label"
+                                             aria-valuenow="75"
+                                             aria-valuetext="75 процентов"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="mb-3" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Python</span>
-                                        <span class="text-primary">85%</span>
+                                        <span id="python-label">Python</span>
+                                        <span class="text-primary" aria-hidden="true">85%</span>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-info" style="width: 85%"></div>
+                                        <div class="progress-bar bg-info" 
+                                             style="width: 85%"
+                                             aria-labelledby="python-label"
+                                             aria-valuenow="85"
+                                             aria-valuetext="85 процентов"></div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Веб-дизайн</span>
-                                        <span class="text-primary">80%</span>
+                                        <span id="design-label">Веб-дизайн</span>
+                                        <span class="text-primary" aria-hidden="true">80%</span>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-warning" style="width: 80%"></div>
+                                        <div class="progress-bar bg-warning" 
+                                             style="width: 80%"
+                                             aria-labelledby="design-label"
+                                             aria-valuenow="80"
+                                             aria-valuetext="80 процентов"></div>
                                     </div>
                                 </div>
                             </div>
@@ -181,91 +240,97 @@
                 </div>
             </section>
 
-            <section class="mb-5">
+            <!-- Секция проектов -->
+            <section aria-labelledby="projects-heading" class="mb-5">
                 <div class="card shadow-sm">
                     <div class="card-header bg-light">
-                        <h3 class="card-title h5 mb-0">
-                            <i class="bi bi-folder-fill text-primary"></i>
-                            Мои проекты
+                        <h3 id="projects-heading" class="card-title h5 mb-0">
+                            <i class="bi bi-folder-fill text-primary" aria-hidden="true"></i>
+                            <span>Мои проекты</span>
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="card h-100">
+                        <div class="row g-3" role="list" aria-label="Список проектов">
+                            <!-- Проект 1 -->
+                            <div class="col-md-4" role="listitem">
+                                <article class="card h-100">
                                     <picture>
                                         <source srcset="images/project1.avif" type="image/avif">
                                         <source srcset="images/project1.webp" type="image/webp">
                                         <img src="images/project1.jpg" 
-                                            class="card-img-top" 
-                                            alt="Личный сайт"
-                                            width="300"
-                                            height="150"
-                                            style="height: 150px; object-fit: cover;"
-                                            loading="lazy">
+                                             class="card-img-top" 
+                                             alt="Скриншот личного сайта-портфолио"
+                                             width="300"
+                                             height="150"
+                                             style="height: 150px; object-fit: cover;"
+                                             loading="lazy">
                                     </picture>
                                     <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">Личный сайт</h5>
+                                        <h4 class="card-title h6">Личный сайт</h4>
                                         <p class="card-text small text-muted flex-grow-1">
                                             Сайт-портфолио на HTML, CSS и Bootstrap c адаптивным дизайном.
                                         </p>
-                                        <div class="mt-auto">
-                                            <span class="badge bg-primary">HTML</span>
-                                            <span class="badge bg-primary">CSS</span>
-                                            <span class="badge bg-primary">Bootstrap</span>
+                                        <div class="mt-auto" role="list" aria-label="Технологии проекта">
+                                            <span class="badge bg-primary" role="listitem">HTML</span>
+                                            <span class="badge bg-primary" role="listitem">CSS</span>
+                                            <span class="badge bg-primary" role="listitem">Bootstrap</span>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card h-100">
+                            
+                            <!-- Проект 2 -->
+                            <div class="col-md-4" role="listitem">
+                                <article class="card h-100">
                                     <picture>
                                         <source srcset="images/project2.avif" type="image/avif">
                                         <source srcset="images/project2.webp" type="image/webp">
                                         <img src="images/project2.jpg" 
-                                            class="card-img-top" 
-                                            alt="Тодо приложение"
-                                            width="300"
-                                            height="150"
-                                            style="height: 150px; object-fit: cover;"
-                                            loading="lazy">
+                                             class="card-img-top" 
+                                             alt="Скриншот приложения для управления задачами"
+                                             width="300"
+                                             height="150"
+                                             style="height: 150px; object-fit: cover;"
+                                             loading="lazy">
                                     </picture>
                                     <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">Тодо приложение</h5>
+                                        <h4 class="card-title h6">Тодо приложение</h4>
                                         <p class="card-text small text-muted flex-grow-1">
                                             Приложение для управления задачами с использованием JavaScript.
                                         </p>
-                                        <div class="mt-auto">
-                                            <span class="badge bg-success">JavaScript</span>
-                                            <span class="badge bg-success">LocalStorage</span>
+                                        <div class="mt-auto" role="list" aria-label="Технологии проекта">
+                                            <span class="badge bg-success" role="listitem">JavaScript</span>
+                                            <span class="badge bg-success" role="listitem">LocalStorage</span>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card h-100">
+                            
+                            <!-- Проект 3 -->
+                            <div class="col-md-4" role="listitem">
+                                <article class="card h-100">
                                     <picture>
                                         <source srcset="images/project3.avif" type="image/avif">
                                         <source srcset="images/project3.webp" type="image/webp">
                                         <img src="images/project3.jpg" 
-                                            class="card-img-top" 
-                                            alt="Интернет-магазин"
-                                            width="300"
-                                            height="150"
-                                            style="height: 150px; object-fit: cover;"
-                                            loading="lazy">
+                                             class="card-img-top" 
+                                             alt="Скриншот прототипа интернет-магазина"
+                                             width="300"
+                                             height="150"
+                                             style="height: 150px; object-fit: cover;"
+                                             loading="lazy">
                                     </picture>
                                     <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">Интернет-магазин</h5>
+                                        <h4 class="card-title h6">Интернет-магазин</h4>
                                         <p class="card-text small text-muted flex-grow-1">
                                             Прототип интернет-магазина с корзиной товаров и фильтрацией.
                                         </p>
-                                        <div class="mt-auto">
-                                            <span class="badge bg-info">React</span>
-                                            <span class="badge bg-info">API</span>
+                                        <div class="mt-auto" role="list" aria-label="Технологии проекта">
+                                            <span class="badge bg-info" role="listitem">React</span>
+                                            <span class="badge bg-info" role="listitem">API</span>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
                     </div>
@@ -275,19 +340,40 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 footer">
+    <footer class="bg-dark text-white py-4 footer" role="contentinfo" aria-label="Подвал сайта">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Конкина Е.А. Все права защищены.</p>
+                    <p class="mb-0" id="copyright">
+                        &copy; <span aria-label="2024 год">2024</span> Конкина Е.А. Все права защищены.
+                    </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="pages/contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
-                    <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                    <nav aria-label="Дополнительные ссылки">
+                        <a href="pages/contacts.html" 
+                           class="text-white text-decoration-none me-3"
+                           aria-label="Перейти на страницу контактов">
+                            Контакты
+                        </a>
+                        <a href="#" 
+                           class="text-white text-decoration-none"
+                           aria-label="Политика конфиденциальности">
+                            Политика конфиденциальности
+                        </a>
+                    </nav>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Кнопка переключения темы -->
+    <button class="theme-toggle" 
+            id="themeToggle"
+            aria-label="Переключить светлую/тёмную тему"
+            title="Переключить тему">
+        <i class="bi bi-moon" aria-hidden="true"></i>
+        <span class="visually-hidden">Переключить тему</span>
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
